@@ -10,6 +10,9 @@
 (defn not-found []
   {:status 404 :body "Not found\n"})
 
+(def unmentionables #{"Voldemort"}
+  )
+
 (defn greeting-for [nm]
   (cond
     (unmentionables nm) nil
@@ -22,9 +25,6 @@
     (if resp
       (ok resp)
       (not-found))))
-
-(def unmentionables #{"Voldemort"}
-  )
 
 (def echo
   {:name ::echo
