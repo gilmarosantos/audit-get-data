@@ -7,6 +7,7 @@
                  [io.pedestal/pedestal.service "0.7.2"]
                  [io.pedestal/pedestal.route "0.7.2"]
                  [io.pedestal/pedestal.jetty "0.7.2"]
+                 [org.clojure/data.json "2.5.0"]
                  [org.slf4j/slf4j-simple "2.0.10"]]
   :main ^:skip-aot audit-get-data.core
   :target-path "target/%s"
