@@ -75,6 +75,7 @@
 (def service-map
     {::http/routes routes
      ::http/type :jetty
+     ::http/host "0.0.0.0"
      ::http/port 8890})
 
 (defn start []
