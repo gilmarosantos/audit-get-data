@@ -1,7 +1,9 @@
 (ns audit-get-data.core
-  (:gen-class))
+  (:gen-class)
+  (:require
+    [audit-get-data.hello :as hello]))
 
 (defn -main
-  "I don't do a whole lot ... yet."
-  [& args]
-  (println "Hello, World!"))
+  []
+  (hello/start)
+  )

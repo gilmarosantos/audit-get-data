@@ -60,9 +60,9 @@
   {:name ::coerce-body
    :leave
    (fn [context]
-     (cond->
-       (nil? (get-in context [:response :headers "Content-Type"]))
-       (update-in [:response] coerce-to (accepted-type context))))})
+     (cond-> context
+             (nil? (get-in context [:response :headers "Content-Type"]))
+             (update-in [:response] coerce-to (accepted-type context))))})
 
 
 (def routes
@@ -75,23 +75,8 @@
 (def service-map
     {::http/routes routes
      ::http/type :jetty
+     ::http/host "0.0.0.0"
      ::http/port 8890})
 
 (defn start []
   (http/start (http/create-server service-map)))
-
-; For interactive development
-(defonce server (atom nil))
-
-(defn start-dev []
-  (reset! server
-          (http/start (http/create-server
-                        (assoc service-map
-                          ::http/join? false)))))
-
-(defn stop-dev []
-  (http/stop @server))
-
-(defn restart []
-  (stop-dev)
-  (start-dev))
